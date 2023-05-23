@@ -12,6 +12,7 @@ public class Gmail extends Email {
     public Gmail(String emailId, int inboxCapacity) {
         super(emailId);
         this.inboxCapacity=inboxCapacity;
+
     }
 
     public Gmail(String emailId) {
@@ -23,7 +24,6 @@ public class Gmail extends Email {
         // It is guaranteed that:
         // 1. Each mail in the inbox is distinct.
         // 2. The mails are received in non-decreasing order. This means that the date of a new mail is greater than equal to the dates of mails received already.
-
         if(Inbox.size()==getInboxCapacity())
         {
             // Inbox.remove(Inbox.size()-1);
@@ -33,6 +33,8 @@ public class Gmail extends Email {
     }
 
     public void deleteMail(String message){
+        // Each message is distinct
+        // If the given message is found in any mail in the inbox, move the mail to trash, else do nothing
         for(int i =0 ; i < Inbox.size();i++)
         {
             Mail mail = Inbox.get(i);
@@ -44,8 +46,7 @@ public class Gmail extends Email {
                 Inbox.remove(mail);
             }
         }
-        // Each message is distinct
-        // If the given message is found in any mail in the inbox, move the mail to trash, else do nothing
+
 
     }
 
@@ -68,6 +69,7 @@ public class Gmail extends Email {
         Mail mail = Inbox.get(Inbox.size()-1);
         return mail.message;
 
+
     }
 
     public int findMailsBetweenDates(Date start, Date end){
@@ -85,12 +87,12 @@ public class Gmail extends Email {
         }
         return mailbetween;
 
-
     }
 
     public int getInboxSize(){
         // Return number of mails in inbox
         return Inbox.size();
+
 
     }
 
@@ -107,7 +109,9 @@ public class Gmail extends Email {
     }
 
     public int getInboxCapacity() {
-        return this.inboxCapacity;
         // Return the maximum number of mails that can be stored in the inbox
+        return this.inboxCapacity;
+
+
     }
 }
