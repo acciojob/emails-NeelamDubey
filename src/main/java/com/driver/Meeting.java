@@ -17,4 +17,9 @@ public class Meeting {
         return endTime;
     }
 
+    public int compareTo(Meeting o)
+    {
+        return this.endTime.compareTo(o.getEndTime());
+    }
+
 }
